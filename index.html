@@ -134,6 +134,37 @@ absent();
     </code>
     
     <button class="copyButton" id="copyButton2">Button ko daba aur copy maar</button>
+     <hr>
+    
+    <h3>Marks ko marne ke liye niche wala code ko copy maar</h3>
+        <code id="codeToCopy3">
+    function marks() {
+        let classStrength = Number(prompt("Please enter class strength"));
+        let rollNumbers = prompt("Rolls for marks", "Please write the rolls using space").trim().split(" ").map(Number);
+        let marksList = prompt("Enter marks", "Please write the marks using space").trim().split(" ").map(Number);
+        
+        let rollToMark = new Map(rollNumbers.map((roll, index) => [roll, marksList[index]]));
+    
+        for (let i = 0; i < classStrength; i++) {
+            let rollElement = document.querySelector(`#MainContent_gvMarksGradeEntry_lblRoll_No_${i}`);
+            let markElement = document.querySelector(`#MainContent_gvMarksGradeEntry_txtObtainedMarks_${i}`);
+            let absentCheckbox = document.querySelector(`#MainContent_gvMarksGradeEntry_chkAbsent_${i}`);
+    
+            let rollNumber = Number(rollElement.textContent);
+    
+            if (rollToMark.has(rollNumber)) {
+                markElement.value = rollToMark.get(rollNumber);
+            } else {
+                absentCheckbox.click();
+            }
+        }
+    }
+    
+    marks();
+
+    </code>
+    
+    <button class="copyButton" id="copyButton3">Button ko daba aur copy maar</button>
     <hr>
     <p id="copyMessage"></p>
 
@@ -173,6 +204,9 @@ absent();
         });
         document.getElementById("copyButton2").addEventListener("click", function() {
             copyCode("codeToCopy2");
+        });
+         document.getElementById("copyButton3").addEventListener("click", function() {
+            copyCode("codeToCopy3");
         });
     </script>
 </body>
